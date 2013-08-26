@@ -1,0 +1,9 @@
+name: game_store
+description: A sample Game Store application
+dependencies:
+  browser: any
+  js: any
+  polymer: any
+  angular: any
+dev_dependencies:
+  unittest: any
