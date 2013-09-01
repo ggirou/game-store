@@ -3,6 +3,7 @@ description: A sample Game Store application
 dependencies:
   browser: any
   js: any
+  route: any
   polymer: any
   angular: any
   path: any
