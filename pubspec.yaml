@@ -5,5 +5,6 @@ dependencies:
   js: any
   polymer: any
   angular: any
+  path: any
 dev_dependencies:
   unittest: any
