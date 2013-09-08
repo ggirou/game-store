@@ -12,10 +12,10 @@ Game Store example application
 
 
 Targets:
-* Single-page application
-* MDV with Polymer / Angular
-* Polymer components
-* Custom components
-* Rest client
+* Single-page application → DONE
+* MDV with Polymer → IN PROGRESS
+* Custom components → IN PROGRESS
+* Form validation
 * Internationalization
+* Rest client
 * Unit tests

@@ -1,4 +1,5 @@
 .buildlog
+.settings
 pubspec.lock
 packages
 test/packages
