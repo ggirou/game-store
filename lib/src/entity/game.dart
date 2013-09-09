@@ -1,4 +1,4 @@
-part of game_store;
+part of game_store.entity;
 
 class Game {
   String name;

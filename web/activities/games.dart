@@ -1,14 +1,12 @@
-library game_store_games;
+part of game_store.activities;
 
-import 'package:polymer/polymer.dart';
-import 'package:game_store/game_store.dart';
+class GamesActivity implements Activity {
+  Element component;
 
-@CustomTag('x-games')
-class XGames extends PolymerElement with ObservableMixin implements Activity {
-
+  GamesActivity(Element this.component);
   
-  start() {
-    
+  start(Element e) {
+    e.children = [component];
+    document.title = "Games";
   }
 }
-
