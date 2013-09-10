@@ -6,8 +6,9 @@ import 'package:route/client.dart';
 import 'package:dado/dado.dart';
 import 'package:game_store/web.dart';
 
-import 'activities/activities.dart';
 import 'ioc/game_store_module.dart';
+import 'activities/game.dart';
+import 'activities/games.dart';
 
 final homeUrl = new UrlPattern(r'/(.*)#/welcome');
 final gamesUrl = new UrlPattern(r'/(.*)#/games');
@@ -20,10 +21,10 @@ void main() {
   mdv.initialize();
 
   var router = new Router()
-    ..addHandler(homeUrl, routeChanged(homeUrl, GameActivity))
-    ..addHandler(gamesUrl, routeChanged(gamesUrl, GamesActivity))
-    ..addHandler(myGamesUrl, routeChanged(myGamesUrl, GameActivity))
-    ..addHandler(gameUrl, routeChanged(gameUrl, GameActivity))
+    ..addHandler(homeUrl, routeChanged(GameActivity, (_) => 1))
+    ..addHandler(gamesUrl, routeChanged(GamesActivity, (_) => null))
+    ..addHandler(myGamesUrl, routeChanged(GameActivity, (_) => 1))
+    ..addHandler(gameUrl, routeChanged(GameActivity, (path) => int.parse(gameUrl.parse(path)[1])))
     ..listen();
   
   try {
@@ -33,10 +34,12 @@ void main() {
   }
 }
 
-routeChanged(UrlPattern pattern, Type type) => (path) {
-  Activity activity = injector.getInstanceOf(type);
-  activity.start(query('#container'));
+routeChanged(Type type, placeParser(_path)) => (path) {
+  var place = placeParser(path);
   
-  return print("Changed page container for $type");
+  Activity activity = injector.getInstanceOf(type);
+  activity.start(query('#container'), place);
+  
+  return print("Changed page container for $type($place)");
 };
 

@@ -16,7 +16,8 @@ Targets:
 * MDV with Polymer → IN PROGRESS
 * Custom components → IN PROGRESS
 * Dependency injection → DONE
-* Rest client
+* Rest client → DONE
 * Form validation
 * Internationalization
 * Unit tests
+* Logs

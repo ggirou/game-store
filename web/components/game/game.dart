@@ -9,10 +9,13 @@ class XGame extends PolymerElement with ObservableMixin {
 
   @observable String gameId = "World";
   
-  @observable Game game = new Game()
-    ..name = "Half-Life"
-    ..genre = "Action"
-    ..releaseDate = new DateTime(1998, 11, 8)
-    ..description = "Named Game of the Year by over 50 publications, Valve's debut title blends action and adventure with award-winning technology to create a frighteningly realistic world where players must think to survive. Also includes an exciting multiplayer mode that allows you to play against friends and enemies around the world."
-    ;
+  @observable Game game;
+
+  @observable bool isEmpty = true;
+  
+  void created() {
+    super.created();
+    
+    bindProperty(this, const Symbol('game'), () => isEmpty = game == null);
+  }
 }

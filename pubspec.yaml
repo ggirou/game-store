@@ -10,3 +10,4 @@ dependencies:
   dado: any
 dev_dependencies:
   unittest: any
+  discovery_api_client_generator: any

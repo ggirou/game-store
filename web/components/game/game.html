@@ -24,13 +24,20 @@
       </style>
       
       <div class="game">
-        <img src="/images/games/half-life.jpg" class="span2">
-        <p>
-            <h3>{{game.name}}</h3>
-            <p><b>Genre:</b> {{game.genre}}</p>
-            <p><b>Release Date:</b> {{game.releaseDate}}</p>
-            <p><b>Description:</b> {{game.description}}</p>
-        </p>
+        <template if="{{isEmpty}}">
+          <h3>Unknown game</h3>
+        </template>
+        <template if="{{!isEmpty}}">
+          <template if="{{game.image}}">
+            <img src="/images/games/{{game.image}}" class="span2">
+          </template>
+          <p>
+              <h3>{{game.name}}</h3>
+              <p><b>Genre:</b> {{game.genre}}</p>
+              <p><b>Release Date:</b> {{game.releaseDate}}</p>
+              <p><b>Description:</b> {{game.description}}</p>
+          </p>
+        </template>
       </div>
     </template>
     <script type="application/dart" src="game.dart"></script>
