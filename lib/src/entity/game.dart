@@ -4,6 +4,6 @@ class Game {
   String name;
   String genre;
   String image;
-  DateTime releaseDate;
+  String players;
   String description;
 }

@@ -12,7 +12,7 @@ Game _mapToGame(Map m) => new Game()
     ..name = m["name"]
     ..genre = m["genre"]
     ..image = m["image"]
-    ..releaseDate = DateTime.parse(m["releaseDate"])
+    ..players = m["players"]
     ..description = m["description"];
 
 class GamesApiClient {

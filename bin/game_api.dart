@@ -3,8 +3,12 @@ library game_store.server.game_api;
 import 'dart:async';
 
 List<Map> _games = [
-  {"id": 1, "name": "Half-Life", "genre": "Action", "image": "half-life.jpg", "releaseDate": "1998-11-08", "description": "Named Game of the Year by over 50 publications, Valve's debut title blends action and adventure with award-winning technology to create a frighteningly realistic world where players must think to survive. Also includes an exciting multiplayer mode that allows you to play against friends and enemies around the world."},
-  {"id": 2, "name": "Half-Life 2", "genre": "Action", "image": "half-life_2.jpg", "releaseDate": "2004-11-16", "description": "1998. HALF-LIFE sends a shock through the game industry with its combination of pounding action and continuous, immersive storytelling. Valve's debut title wins more than 50 game-of-the-year awards on its way to being named \"Best PC Game Ever\" by PC Gamer, and launches a franchise with more than eight million retail units sold worldwide."},
+  {"id": 1, "name": "Darts", "genre": "Pub game", "image": "darts.jpg", 
+    "description": "Darts is a form of throwing game in which small missiles are thrown at a circular target (dartboard) fixed to a wall. Though various boards and rules have been used in the past, the term \"darts\" usually now refers to a standardised game involving a specific board design and set of rules."},
+  {"id": 2, "name": "Chess", "genre": "Board game", "image": "chess.jpg", "players": "2", 
+    "description": "Chess is a two-player strategy board game played on a chessboard, a checkered gameboard with 64 squares arranged in an eight-by-eight grid. It is one of the world's most popular games, played by millions of people worldwide at home, in clubs, online, by correspondence, and in tournaments."},
+  {"id": 3, "name": "Dices", "genre": "Random game", "image": "dice.jpg", 
+    "description": "Dice are small throwable objects with multiple resting positions, used for generating random numbers. This makes dice suitable as gambling devices for games like craps, or for use in non-gambling tabletop games."},
 ];
 
 Future<List<Map>> get all => new Future.value(_games);

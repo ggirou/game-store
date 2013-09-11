@@ -29,12 +29,10 @@
         </template>
         <template if="{{!isEmpty}}">
           <h3>{{game.name | uppercase}}</h3>
-          <template if="{{game.image}}">
-            <img src="/images/games/{{game.image}}" class="span2">
-          </template>
+          <img class="span2 visible-{{game.image | notEmpty}}" src="/images/games/{{game.image}}">
           <p>
               <p><b>Genre:</b> {{game.genre}}</p>
-              <p><b>Release Date:</b> {{game.releaseDate}}</p>
+              <p class="visible-{{game.players | notEmpty}}"><b>Players:</b> {{game.players}}</p>
               <p><b>Description:</b> {{game.description}}</p>
           </p>
         </template>
