@@ -3,11 +3,11 @@ description: A sample Game Store application
 dependencies:
   browser: any
   js: any
-  route: any
   polymer: any
 #  angular: any
+  route: any
   path: any
   dado: any
 dev_dependencies:
   unittest: any
-  discovery_api_client_generator: any
+#  discovery_api_client_generator: any

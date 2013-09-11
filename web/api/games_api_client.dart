@@ -18,9 +18,9 @@ Game _mapToGame(Map m) => new Game()
 class GamesApiClient {
   String rootUrl = "";
   
-  Future<List<Game>> get all => HttpRequest.getString("$rootUrl/api/games", onProgress: (e) => print("PROGRESS: $e"))
+  Future<List<Game>> get all => HttpRequest.getString("$rootUrl/api/games")
       .then(JSON.decode)
-      .then((List<Map> games) => games.map(_mapToGame));
+      .then((List<Map> games) => games.map(_mapToGame).toList());
   
   Future<Game> getById(int id) => HttpRequest.getString("$rootUrl/api/games/$id")
       .then(JSON.decode)

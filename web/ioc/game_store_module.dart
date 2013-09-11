@@ -15,15 +15,19 @@ const gameComponent = const ComponentRef("components/game/game.html", "x-game");
 const gamesComponent = const ComponentRef("components/game/games.html", "x-games");
 
 class GameStoreModule extends Module {
-  // TODO: use parameters injection instead when reflection on parameter metadata will work
+  // TODO: use parameters injection instead, when reflection on parameter metadata will work
   GameActivity newGameActivity() => bindTo(GameActivity).providedBy(() => new GameActivity(newXGame(), newGamesApiClient())).newInstance();
-  GamesActivity newGamesActivity() => bindTo(GamesActivity).providedBy(() => new GamesActivity(newXGames())).newInstance();
+  GamesActivity newGamesActivity() => bindTo(GamesActivity).providedBy(() => new GamesActivity(newXGames(), newGamesApiClient())).newInstance();
 
   Element newXGame() => bindTo(Element, annotatedWith: gameComponent).providedBy(() => _createComponent(gameComponent)).newInstance();
   Element newXGames() => bindTo(Element, annotatedWith: gamesComponent).providedBy(() => _createComponent(gamesComponent)).newInstance();
 
   GamesApiClient newGamesApiClient() => bindTo(GamesApiClient).providedBy(() => new GamesApiClient()).newInstance();
 }
+
+final globals = {
+  'uppercase': (String v) => v.toUpperCase(),
+};
 
 _createComponent(ComponentRef componentRef) {
   var link = document.head.children.firstWhere((e) => e is LinkElement
