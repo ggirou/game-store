@@ -17,6 +17,7 @@ Targets:
 * Custom components → IN PROGRESS
 * Dependency injection → DONE
 * Rest client → DONE
+* Custom events
 * Form validation
 * Internationalization
 * Unit tests

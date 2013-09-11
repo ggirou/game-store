@@ -12,6 +12,7 @@ import 'activities/games.dart';
 
 final homeUrl = new UrlPattern(r'/(.*)#/welcome');
 final gamesUrl = new UrlPattern(r'/(.*)#/games');
+final myBucketUrl = new UrlPattern(r'/(.*)#/mybucket');
 final myGamesUrl = new UrlPattern(r'/(.*)#/mygames');
 final gameUrl = new UrlPattern(r'/(.*)#/game/(\d+)');
 
@@ -23,6 +24,7 @@ void main() {
   var router = new Router()
     ..addHandler(homeUrl, routeChanged(GameActivity, (_) => 1))
     ..addHandler(gamesUrl, routeChanged(GamesActivity, (_) => null))
+    ..addHandler(myBucketUrl, routeChanged(GamesActivity, (_) => null))
     ..addHandler(myGamesUrl, routeChanged(GameActivity, (_) => 1))
     ..addHandler(gameUrl, routeChanged(GameActivity, (path) => int.parse(gameUrl.parse(path)[1])))
     ..listen();

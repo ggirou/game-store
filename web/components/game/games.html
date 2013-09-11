@@ -1,46 +1,39 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-</head>
 
-<body>
-
-  <polymer-element name="x-games" apply-author-styles>
-    <template>
-      <style>
-        @host {
-          x-games {
-            text-align : justify;
-          }
-        } 
-        
-        .game {
-          clear: both;
+<polymer-element name="x-games" apply-author-styles>
+  <template>
+    <style>
+      @host {
+        x-games {
+          text-align : justify;
         }
-        
-        .game img {
-          float: left;
-          width: 200px;
-          margin: 0 20px 20px 0;
-        }
-      </style>
+      } 
+      
+      .game {
+        clear: both;
+      }
+      
+      .game img {
+        float: left;
+        width: 200px;
+        margin: 0 20px 20px 0;
+      }
+    </style>
 
-      <h3>Games</h3>
-      <template repeat="{{game in _games}}">
-        <div class="game">
-          <img src="/images/games/{{game.image}}" class="span2">
-          <p>
-              <h3>{{game.name | uppercase}}</h3>
-              <p><b>Genre:</b> {{game.genre}}</p>
-              <p class="visible-{{game.players | notEmpty}}"><b>Players:</b> {{game.players}}</p>
-              <p><b>Description:</b> {{game.description}}</p>
-          </p>
-        </div>
-      </template>
+    <h3>Games</h3>
+    <template repeat="{{game in _games}}">
+      <div class="game">
+        <img src="/img/games/{{game.image}}" class="span2">
+        <p>
+            <h3>{{game.name | uppercase}}
+              <a class="btn btn-info" on-click="addGame" data="{{game}}"><i class="icon-inbox icon-white"></i></a>
+            </h3>
+            <p><b>Genre:</b> {{game.genre}}</p>
+            <p class="visible-{{game.players | notEmpty}}"><b>Players:</b> {{game.players}}</p>
+            <p><b>Description:</b> {{game.description}}</p>
+        </p>
+      </div>
     </template>
-    <script type="application/dart" src="games.dart"></script>
-  </polymer-element>
-
-</body>
-</html>
+  </template>
+  <script type="application/dart" src="games.dart"></script>
+</polymer-element>

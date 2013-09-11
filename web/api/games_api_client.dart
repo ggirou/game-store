@@ -9,6 +9,7 @@ import 'package:game_store/entity.dart';
 var toto;
 
 Game _mapToGame(Map m) => new Game()
+    ..id = m["id"]
     ..name = m["name"]
     ..genre = m["genre"]
     ..image = m["image"]
