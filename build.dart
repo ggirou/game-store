@@ -7,4 +7,5 @@ void main() {
   // loadDocumentFromFile("meta/simple_service.json").then((String doc) => generateLibraryFromSource(doc, "lib/src/rest/simple_service/"));
   
   polymer.build(new Options().arguments, ['web/index.html']);
+//  build(entryPoints: ['web/index.html'])
 }

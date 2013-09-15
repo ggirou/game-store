@@ -15,7 +15,10 @@ class XGames extends CustomPolymerElement with ObservableMixin {
   List<Game> get games => _games; 
   set games(List<Game> values) => _games..clear()..addAll(values); 
   
-  void addGame(Event e, var detail, Node target) {
-    print("addGame ${target.attributes['data']}");
+  void addGame(Event e, var detail, Element target) {
+    var game = target.attributes['data'];
+    print("Click on addGame $game");
+
+    dispatchEvent(new CustomEvent("add-game", detail: game));
   }
 }

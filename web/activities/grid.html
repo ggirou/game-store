@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+
+<link rel="import" href="../components/grid/grid.html">
+
+<polymer-element name="grid-activity" apply-author-styles>
+  <template>
+    <x-grid id="grid">
+      <template id="header-a">Header A - {{}}</template>
+      <template id="header-b">Header B - {{}}</template>
+      <template id="cell-a">Cell A {{}}</template>
+      <template id="cell-b">Cell B {{}}</template>
+    </x-grid>
+  </template>
+  <script type="application/dart" src="grid.dart"></script>
+</polymer-element>

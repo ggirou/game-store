@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-
-<polymer-element name="x-games" apply-author-styles>
+  
+<polymer-element name="x-games" attributes="games" apply-author-styles>
   <template>
     <style>
       @host {
@@ -20,7 +20,6 @@
       }
     </style>
 
-    <h3>Games</h3>
     <template repeat="{{game in _games}}">
       <div class="game">
         <img src="/img/games/{{game.image}}" class="span2">
@@ -29,7 +28,7 @@
               <a class="btn btn-info" on-click="addGame" data="{{game}}"><i class="icon-inbox icon-white"></i></a>
             </h3>
             <p><b>Genre:</b> {{game.genre}}</p>
-            <p class="visible-{{game.players | notEmpty}}"><b>Players:</b> {{game.players}}</p>
+            <p hidden?="{{isEmpty(game.players)}}"><b>Players:</b> {{game.players}}</p>
             <p><b>Description:</b> {{game.description}}</p>
         </p>
       </div>

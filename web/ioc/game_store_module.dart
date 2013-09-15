@@ -7,20 +7,23 @@ import 'package:polymer/polymer.dart';
 
 import 'package:game_store/web.dart';
 
+import '../api/games_api_client.dart';
 import '../activities/game.dart';
 import '../activities/games.dart';
-import '../api/games_api_client.dart';
+import '../activities/grid.dart';
 
-const gameComponent = const ComponentRef("components/game/game.html", "x-game");
-const gamesComponent = const ComponentRef("components/game/games.html", "x-games");
+const gameActivity = const ComponentRef("activities/game.html", "game-activity");
+const gamesActivity = const ComponentRef("activities/games.html", "games-activity");
+const gridActivity = const ComponentRef("activities/grid.html", "grid-activity");
 
 class GameStoreModule extends Module {
   // TODO: use parameters injection instead, when reflection on parameter metadata will work
-  GameActivity newGameActivity() => bindTo(GameActivity).providedBy(() => new GameActivity(newXGame(), newGamesApiClient())).newInstance();
-  GamesActivity newGamesActivity() => bindTo(GamesActivity).providedBy(() => new GamesActivity(newXGames(), newGamesApiClient())).newInstance();
-
-  Element newXGame() => bindTo(Element, annotatedWith: gameComponent).providedBy(() => _createComponent(gameComponent)).newInstance();
-  Element newXGames() => bindTo(Element, annotatedWith: gamesComponent).providedBy(() => _createComponent(gamesComponent)).newInstance();
+  GameActivity newGameActivity() => bindTo(GamesActivity)
+      .providedBy(() => _createComponent(gameActivity).xtag..gamesApiClient = newGamesApiClient()).newInstance();
+  GamesActivity newGamesActivity() => bindTo(GamesActivity)
+      .providedBy(() => _createComponent(gamesActivity).xtag..gamesApiClient = newGamesApiClient()).newInstance();
+  GridActivity newGridActivity() => bindTo(GridActivity)
+      .providedBy(() => _createComponent(gridActivity).xtag).newInstance();
 
   GamesApiClient newGamesApiClient() => bindTo(GamesApiClient).providedBy(() => new GamesApiClient()).newInstance();
 }

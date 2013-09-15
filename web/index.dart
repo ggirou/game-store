@@ -9,12 +9,14 @@ import 'package:game_store/web.dart';
 import 'ioc/game_store_module.dart';
 import 'activities/game.dart';
 import 'activities/games.dart';
+import 'activities/grid.dart';
 
 final homeUrl = new UrlPattern(r'/(.*)#/welcome');
 final gamesUrl = new UrlPattern(r'/(.*)#/games');
 final myBucketUrl = new UrlPattern(r'/(.*)#/mybucket');
 final myGamesUrl = new UrlPattern(r'/(.*)#/mygames');
-final gameUrl = new UrlPattern(r'/(.*)#/game/(\d+)');
+final gameUrl = new UrlPattern(r'/(.*)#/games/(\d+)');
+final gridUrl = new UrlPattern(r'/(.*)#/grid');
 
 final injector = new Injector([GameStoreModule]);
 
@@ -27,6 +29,7 @@ void main() {
     ..addHandler(myBucketUrl, routeChanged(GamesActivity, (_) => null))
     ..addHandler(myGamesUrl, routeChanged(GameActivity, (_) => 1))
     ..addHandler(gameUrl, routeChanged(GameActivity, (path) => int.parse(gameUrl.parse(path)[1])))
+    ..addHandler(gridUrl, routeChanged(GridActivity, (_) => 1))
     ..listen();
   
   try {

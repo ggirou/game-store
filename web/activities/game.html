@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<link rel="import" href="../components/game/game.html">
+
+<polymer-element name="game-activity" apply-author-styles>
+  <template>
+    <h3 hidden?="{{notEmpty(game)}}">Unknown game</h3>
+    <h3 hidden?="{{isEmpty(game)}}">{{game.name | uppercase}}</h3>
+    
+    <x-game game="{{game}}" hidden?="{{isEmpty(game)}}"></x-game>
+  </template>
+  <script type="application/dart" src="game.dart"></script>
+</polymer-element>

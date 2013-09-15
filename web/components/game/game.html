@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<polymer-element name="x-game" attributes="game-id">
+<polymer-element name="x-game" attributes="game">
   <template>
     <style>
       @host {
@@ -17,18 +17,12 @@
     </style>
     
     <div class="game">
-      <template if="{{isEmpty}}">
-        <h3>Unknown game</h3>
-      </template>
-      <template if="{{!isEmpty}}">
-        <h3>{{game.name | uppercase}}</h3>
-        <img class="span2 visible-{{game.image | notEmpty}}" src="/img/games/{{game.image}}">
-        <p>
-            <p><b>Genre:</b> {{game.genre}}</p>
-            <p class="visible-{{game.players | notEmpty}}"><b>Players:</b> {{game.players}}</p>
-            <p><b>Description:</b> {{game.description}}</p>
-        </p>
-      </template>
+      <img class="span2 visible-{{game.image | notEmpty}}" src="/img/games/{{game.image}}">
+      <p>
+          <p><b>Genre:</b> {{game.genre}}</p>
+          <p hidden?="{{isEmpty(game.players)}}"><b>Players:</b> {{game.players}}</p>
+          <p><b>Description:</b> {{game.description}}</p>
+      </p>
     </div>
   </template>
   <script type="application/dart" src="game.dart"></script>
