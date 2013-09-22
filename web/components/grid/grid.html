@@ -1,59 +1,37 @@
 <!DOCTYPE html>
 
-<polymer-element name="x-grid" attributes="games">
+<polymer-element name="x-grid" attributes="columns,values">
   <template>
-    <style>
-      @host {
-        x-grid {
-          text-align : justify;
-        }
-      } 
-      
-      .grid {
-        display: table;
-      }
-      
-      .grid .header, .grid .row {
-        display: table-row;
-      }
-      
-      .grid .header ::-webkit-distributed(> [header]), 
-        .grid .header > [header], 
-        .grid .row ::-webkit-distributed(> [cell]),
-        .grid .row > [cell] {
-        display: table-cell;
-      }
-    </style>
+    <table class="table">
+      <thead>
+        <template ref="header-template" bind></template>
+      </thead>
+      <tbody>
+        <template ref="row-template" repeat="{{value in values}}" bind></template>
+      </tbody>
+    </table>
     
-    <content id="templates" select="template"></content>
-   
     <template id="header-template">
-      <div class="header">
-        <div><!-- Bug: Fake cell because of template cell in rows --></div>
-        <template repeat="{{columns}}">
-          <div header>
-            <template ref="header-{{}}" bind></template>
-          </div>
-        </template>
-      </div>
+      <tr>
+        <th template repeat="{{column in columns}}">
+            <template ref="header-{{column}}" bind="{{ newGridColumnHeader(column) }}"></template>
+        </th>
+      <tr>
     </template>
     
     <template id="cell-template">
-      <div cell>
-        <template ref="cell-{{column}}" bind="{{ {column: column, data: value} }}" ></template>
-      </div>
+      <td>
+        <template ref="cell-{{column}}" bind="{{ newGridCell(column, value) }}"></template>
+      </td>
     </template>
     
     <template id="row-template">
-      <div class="row">
+      <tr>
         <template ref="cell-template" repeat="{{column in columns}}" bind></template>
-      </div>
+      </tr>
     </template>
-    
-    <div class="grid">
-      <template ref="header-template" bind></template>
-      <template ref="row-template" repeat="{{value in _values}}" bind></template>
-    </div>
+
+    <content id="templates" select="template"></content>
   </template>
   <script type="application/dart" src="grid.dart"></script>
 </polymer-element>

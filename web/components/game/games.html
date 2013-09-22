@@ -24,7 +24,7 @@
       <div class="game">
         <img src="/img/games/{{game.image}}" class="span2">
         <p>
-            <h3>{{game.name | uppercase}}
+            <h3>{{game.name | toUpperCase}}
               <a class="btn btn-info" on-click="addGame" data="{{game}}"><i class="icon-inbox icon-white"></i></a>
             </h3>
             <p><b>Genre:</b> {{game.genre}}</p>

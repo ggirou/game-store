@@ -9,26 +9,31 @@ import 'package:game_store/web.dart';
 class XGrid extends CustomPolymerElement with ObservableMixin {
   bool get applyAuthorStyles => true;
   
-  List _columns = toObservable(['a','b']);
-//  @observable List columns;
-  List get columns => _columns;
-  set columns(List values) => _columns..clear()..addAll(_colvaluesumns);
-
-  List _values = toObservable([]);
-//  @observable List values;
-  List get values => _values;
-  set values(List values) => _values..clear()..addAll(values);
+  @observable List columns = toObservable([]);
+  @observable List values = toObservable([]);
 
   void created() {
     super.created();
 
-//    bindProperty(this, const Symbol('columns'), () => _columns..clear()..addAll(_columns));
-//    bindProperty(this, const Symbol('values'), () => _values..clear()..addAll(values));
-    
-    var root = getShadowRoot('x-grid');
-    ContentElement content = root.query("content#templates");
+    ContentElement content = shadowRoot.query("content#templates");
     var templates = content.getDistributedNodes();
     
-    root.children.addAll(templates);
+    shadowRoot.children.addAll(templates);
   }
+
+  newGridColumnHeader(column) => new GridColumnHeader(column);
+  newGridCell(column, data) => new GridCell(column, data);
+}
+
+@CustomTag('x-grid-column-header')
+class GridColumnHeader extends CustomPolymerElement with ObservableMixin {
+  @observable String column;
+  GridColumnHeader(this.column);
+}
+
+@CustomTag('x-grid-cell')
+class GridCell extends CustomPolymerElement with ObservableMixin {
+  @observable String column;
+  @observable var data;
+  GridCell(this.column, this.data);
 }

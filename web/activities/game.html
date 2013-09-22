@@ -5,7 +5,7 @@
 <polymer-element name="game-activity" apply-author-styles>
   <template>
     <h3 hidden?="{{notEmpty(game)}}">Unknown game</h3>
-    <h3 hidden?="{{isEmpty(game)}}">{{game.name | uppercase}}</h3>
+    <h3 hidden?="{{isEmpty(game)}}">{{game.name | toUpperCase}}</h3>
     
     <x-game game="{{game}}" hidden?="{{isEmpty(game)}}"></x-game>
   </template>

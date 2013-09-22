@@ -41,7 +41,7 @@ void main() {
 
 routeChanged(Type type, placeParser(_path)) => (path) {
   var place = placeParser(path);
-  
+
   Activity activity = injector.getInstanceOf(type);
   activity.start(query('#container'), place);
   

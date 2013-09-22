@@ -4,11 +4,15 @@
 
 <polymer-element name="grid-activity" apply-author-styles>
   <template>
-    <x-grid id="grid">
-      <template id="header-a">Header A - {{}}</template>
-      <template id="header-b">Header B - {{}}</template>
-      <template id="cell-a">Cell A {{}}</template>
-      <template id="cell-b">Cell B {{}}</template>
+    <x-grid id="grid" columns="{{_columns}}" values="{{_values}}">
+      <template id="header-fruit">Fruit</template>
+      <template id="header-color">Color</template>
+      <template id="header-button"></template>
+      <template id="cell-fruit">The {{data['fruit']}}</template>
+      <template id="cell-color">&nbsp;is {{data['color']}}</template>
+      <template id="cell-button">
+        <a class="btn btn-info" on-click="onCustomClick" data="{{column}}"><i class="icon-inbox icon-white"></i></a>
+      </template>
     </x-grid>
   </template>
   <script type="application/dart" src="grid.dart"></script>
