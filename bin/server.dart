@@ -15,12 +15,9 @@ final gamesApiUrl = new UrlPattern(r'/api/games');
 final assetUrl = new UrlPattern(r'/(.+/)?asset/(.*)');
 final homeUrl = new UrlPattern(r'/(.*)');
 
-startServer(String basePath, String assetPath) {
+startServer(address, int port, String basePath, String assetPath) {
   basePath = Path.normalize(basePath);
   assetPath = Path.normalize(assetPath);
-  
-  var address = '127.0.0.1';
-  var port = 8080;
   
   HttpServer.bind(address, port).then((HttpServer server) {
     log("Server started on http://$address:$port");
@@ -93,7 +90,11 @@ Future _sendJSON(HttpRequest request, data) {
 }
 
 main() {
+  var args = new Options().arguments;
+  var address = '0.0.0.0';
+  var port = args.length > 0 ? int.parse(args[0]) : 8080;
+  
   // Compute base path for the request based on the location of the script and then start the server.
   File script = new File(new File(new Options().script).fullPathSync());
-  startServer("${script.directory.path}/../web", "${script.directory.path}/../asset");
+  startServer(address, port, "${script.directory.path}/../web", "${script.directory.path}/../asset");
 }
