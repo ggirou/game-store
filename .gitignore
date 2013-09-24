@@ -1,6 +1,7 @@
 .buildlog
 .settings
 pubspec.lock
+deploy
 packages
 test/packages
 web/packages

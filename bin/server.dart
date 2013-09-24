@@ -90,11 +90,13 @@ Future _sendJSON(HttpRequest request, data) {
 }
 
 main() {
+  // Compute base path for the request based on the location of the script and then start the server.
+  var scriptDir = new File(new File(new Options().script).fullPathSync()).directory.path;
+
   var args = new Options().arguments;
   var address = '0.0.0.0';
   var port = args.length > 0 ? int.parse(args[0]) : 8080;
+  var webPath = args.length > 1 ? args[1] : "$scriptDir/../web";
   
-  // Compute base path for the request based on the location of the script and then start the server.
-  File script = new File(new File(new Options().script).fullPathSync());
-  startServer(address, port, "${script.directory.path}/../web", "${script.directory.path}/../asset");
+  startServer(address, port, webPath, "$scriptDir/../asset");
 }
