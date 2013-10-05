@@ -10,17 +10,17 @@ import 'package:route/server.dart';
 
 import 'game_api.dart' as GameApi;
 
-final gameApiUrl = new UrlPattern(r'/api/games/(\d+)');
-final gamesApiUrl = new UrlPattern(r'/api/games');
+final gameApiUrl = new UrlPattern(r'/api/games/(\d+).json');
+final gamesApiUrl = new UrlPattern(r'/api/games.json');
 final assetUrl = new UrlPattern(r'/(.+/)?asset/(.*)');
 final homeUrl = new UrlPattern(r'/(.*)');
 
-startServer(address, int port, String basePath, String assetPath) {
+Future startServer(address, int port, String basePath, String assetPath) {
   basePath = Path.normalize(basePath);
   assetPath = Path.normalize(assetPath);
   
-  HttpServer.bind(address, port).then((HttpServer server) {
-    log("Server started on http://$address:$port");
+  return HttpServer.bind(address, port).then((HttpServer server) {
+    log("Server started on http://$address:$port - Try it: http://${Platform.localHostname}:$port");
     log("Basepath: $basePath; Assetpath: $assetPath");
 
     var router = new Router(server)
@@ -98,5 +98,7 @@ main() {
   var port = args.length > 0 ? int.parse(args[0]) : 8080;
   var webPath = args.length > 1 ? args[1] : "$scriptDir/../web";
   
-  startServer(address, port, webPath, "$scriptDir/../asset");
+  GameApi.loadGames(webPath).then((_) => 
+    startServer(address, port, webPath, "$scriptDir/../asset")
+  );
 }

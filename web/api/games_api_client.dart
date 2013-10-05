@@ -17,14 +17,14 @@ Game _mapToGame(Map m) => new Game()
     ..description = m["description"];
 
 class GamesApiClient {
-  String rootUrl = "";
+  String rootUrl = ".";
   
-  Future<List<Game>> get all => HttpRequest.getString("$rootUrl/api/games")
+  Future<List<Game>> get all => HttpRequest.getString("$rootUrl/api/games.json")
       .then(JSON.decode)
       .then((List<Map> games) => games.map(_mapToGame).toList());
   
-  Future<Game> getById(int id) => HttpRequest.getString("$rootUrl/api/games/$id")
+  Future<Game> getById(int id) => HttpRequest.getString("$rootUrl/api/games/$id.json")
       .then(JSON.decode)
       .then(_mapToGame)
-      .catchError((e) => null, test: (e) => e is HttpRequestProgressEvent && e.target.status == 404);
+      .catchError((e) => null, test: (e) => e is ProgressEvent && e.target.status == 404);
 }

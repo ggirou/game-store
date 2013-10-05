@@ -17,7 +17,7 @@
     </style>
     
     <div class="game">
-      <img class="span2 visible-{{game.image | notEmpty}}" src="/img/games/{{game.image}}">
+      <img class="span2 visible-{{game.image | notEmpty}}" src="./img/games/{{game.image}}">
       <p>
           <p><b>Genre:</b> {{game.genre}}</p>
           <p hidden?="{{isEmpty(game.players)}}"><b>Players:</b> {{game.players}}</p>
