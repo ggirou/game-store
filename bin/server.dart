@@ -4,7 +4,7 @@ import 'dart:io';
 import 'dart:convert';
 import 'dart:async';
 
-import 'packages/path/path.dart' as Path;
+import 'package:path/path.dart' as Path;
 
 import 'package:route/server.dart';
 

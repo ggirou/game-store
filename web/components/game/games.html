@@ -20,9 +20,9 @@
       }
     </style>
 
-    <template repeat="{{game in _games}}">
+    <template repeat="{{game in games}}">
       <div class="game">
-        <img src="./img/games/{{game.image}}" class="span2">
+        <img hidden?="{{isEmpty(game.image)}}" src="{{ 'img/games/' + game.image | hostPageBaseUrl }}" class="span2">
         <p>
             <h3>{{game.name | toUpperCase}}
               <a class="btn btn-info" on-click="addGame" data="{{game}}"><i class="icon-inbox icon-white"></i></a>

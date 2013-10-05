@@ -17,7 +17,7 @@
     </style>
     
     <div class="game">
-      <img class="span2 visible-{{game.image | notEmpty}}" src="./img/games/{{game.image}}">
+      <img hidden?="{{isEmpty(game.image)}}" src="{{ 'img/games/' + game.image | hostPageBaseUrl }}" class="span2">
       <p>
           <p><b>Genre:</b> {{game.genre}}</p>
           <p hidden?="{{isEmpty(game.players)}}"><b>Players:</b> {{game.players}}</p>
