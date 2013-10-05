@@ -10,7 +10,7 @@ import 'package:game_store/web.dart';
 class XGames extends CustomPolymerElement with ObservableMixin {
   bool get applyAuthorStyles => true;
 
-  @observable List games = toObservable([]);
+  @observable List<Game> games = toObservable([]);
   
   void addGame(Event e, var detail, Element target) {
     var game = target.attributes['data'];
