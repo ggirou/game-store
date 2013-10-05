@@ -10,8 +10,8 @@ import 'package:game_store/web.dart';
 class GridActivity extends CustomPolymerElement with ObservableMixin implements Activity {
   bool get applyAuthorStyles => true;
 
-  @observable List _columns = toObservable(["fruit", "color","button"]);
-  @observable List _values = toObservable([{"fruit": "Banana", "color": "yellow"}, 
+  @observable List columns = toObservable(["fruit", "color","button"]);
+  @observable List values = toObservable([{"fruit": "Banana", "color": "yellow"}, 
                   {"fruit": "Peer", "color": "green"}, 
                   {"fruit": "Apple", "color": "red"}]);
 

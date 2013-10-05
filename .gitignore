@@ -2,6 +2,7 @@
 .settings
 pubspec.lock
 deploy
+out
 packages
 test/packages
 web/packages
