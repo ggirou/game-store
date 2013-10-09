@@ -2,7 +2,7 @@
 
 <link rel="import" href="../components/game/game.html">
 
-<polymer-element name="game-activity" apply-author-styles>
+<polymer-element name="game-activity">
   <template>
     <h3 hidden?="{{notEmpty(game)}}">Unknown game</h3>
     <h3 hidden?="{{isEmpty(game)}}">{{game.name | toUpperCase}}</h3>
