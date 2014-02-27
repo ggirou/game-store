@@ -3,6 +3,8 @@ part of game_store.web;
 class CustomPolymerElement extends PolymerElement {
   static BindingDelegate _polymerSyntax = new PolymerExpressions(globals: globalFilters);
   
+  CustomPolymerElement.created() : super.created();
+
   BindingDelegate polymerSyntax = _polymerSyntax;
   DocumentFragment instanceTemplate(Element template) => template.createInstance(this, polymerSyntax);
   

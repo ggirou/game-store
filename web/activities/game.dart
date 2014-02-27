@@ -9,12 +9,14 @@ import 'package:game_store/entity.dart';
 import '../api/games_api_client.dart';
 
 @CustomTag('game-activity')
-class GameActivity extends CustomPolymerElement with ObservableMixin implements Activity {
+class GameActivity extends CustomPolymerElement implements Activity {
   bool get applyAuthorStyles => true;
 
   GamesApiClient gamesApiClient;
 
   @observable Game game;
+
+  GameActivity.created() : super.created();
 
   start(Element e, int gameId) {
     e.children = [host];

@@ -5,8 +5,10 @@ import 'package:game_store/entity.dart';
 import 'package:game_store/web.dart';
 
 @CustomTag('x-game')
-class XGame extends CustomPolymerElement with ObservableMixin {
+class XGame extends CustomPolymerElement {
   bool get applyAuthorStyles => true;
 
   @observable Game game;
+  
+  XGame.created() : super.created();
 }

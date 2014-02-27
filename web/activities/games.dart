@@ -9,16 +9,14 @@ import 'package:game_store/entity.dart';
 import '../api/games_api_client.dart';
 
 @CustomTag('games-activity')
-class GamesActivity extends CustomPolymerElement with ObservableMixin implements Activity {
+class GamesActivity extends CustomPolymerElement implements Activity {
   bool get applyAuthorStyles => true;
 
   Element get gamesComponent => getShadowRoot('games-activity').query("#games");
 
   GamesApiClient gamesApiClient;
 
-  void created() {
-    super.created();
-    
+  GamesActivity.created() : super.created() {
     gamesComponent.on['add-game'].listen((CustomEvent e) => print('Received addGame Event ${e.detail}'));
   }
   

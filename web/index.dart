@@ -1,7 +1,7 @@
 library game_store;
 
 import 'dart:html';
-import 'package:mdv/mdv.dart' as mdv;
+import 'package:polymer/polymer.dart';
 import 'package:route/client.dart';
 import 'package:dado/dado.dart';
 import 'package:game_store/web.dart';
@@ -21,7 +21,7 @@ final gridUrl = new UrlPattern(r'/(.*)#/grid');
 final injector = new Injector([GameStoreModule]);
 
 void main() {
-  mdv.initialize();
+  initPolymer();
 
   var router = new Router()
     ..addHandler(homeUrl, routeChanged(GameActivity, (_) => 1))
